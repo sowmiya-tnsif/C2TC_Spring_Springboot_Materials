@@ -1,0 +1,45 @@
+Spring REST Overview & Rest Resources
+======================================
+
+
+REST - REpresentational State Transfer
+We will be using it in Web Services(Web pages, Servlets )
+XML and JSON. JSON is very popular of usage
+
+MVC - Model View Controller
+
+Important HTTP
+===============
+
+GET - To retrive purpose 
+PUT - Adding or Update the data
+POST - Newly creating a data
+DELETE - Remove data from the database
+
+GET/users -Retrieves all data
+GET /users/{id} - primary key - retrieve specific data
+POST/users
+POST/users/{id} - primary key
+PUT/users
+PUT/users/{id} - primary key
+DELETE/users
+DELETE/users/{id} - primary key
+
+
+HTTP STATUS
+============
+404 - Resource Not Found
+200 - Success
+201 - Created
+401 - Unauthorized 
+500 - Server Error
+
+
+
+Advantages Of RESTful API
+==========================
+
+Write any programming language 
+Platform Independent
+It can provide different data format - JSON, HTML & XML
+There is no strict specification
