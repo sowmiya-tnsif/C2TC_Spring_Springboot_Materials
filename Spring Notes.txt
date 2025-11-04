@@ -1,0 +1,374 @@
+Spring Notes
+============
+
+
+* What is Spring?
+
+	Spring is a comprehensive framework for building Java-based applications.
+
+* Framework vs Library?
+
+	Framework: Provides a comprehensive structure and dictates the flow of your application. It calls your code and imposes conventions.
+
+	Library: Offers specific functionality that you use as needed, allowing you to control when and how it's used. Your code calls the library.
+
+
+* Why we use Spring in Java?
+
+	Dependency Injection (DI): Manages dependencies and promotes loose coupling.
+
+	Modularity: Allows use of only needed components and offers flexible configuration.
+
+	Aspect-Oriented Programming (AOP): Manages cross-cutting concerns like logging and security.
+
+	Data Access: Simplifies database interactions and transaction management.
+
+	Spring MVC: Provides a structured approach for building web applications and RESTful services.
+
+	Spring Boot: Eases setup with default configurations and embedded servers, speeding up development.
+
+	Spring Security: Offers comprehensive security features.
+
+	Spring Cloud: Supports microservices architectures with tools for service discovery and management.
+
+	Community and Ecosystem: Benefits from a strong community and a rich set of additional tools and projects.
+
+	Integration: Works well with various technologies and frameworks.
+
+
+
+* Shortcomings of Java EE?
+
+	Shortcomings of Java EE
+	------------------------
+	Complexity: Heavyweight with extensive configuration and boilerplate code.
+
+	Slow Development: Verbose setup and complex deployment processes.
+
+	Inflexibility: Tight coupling and potential vendor lock-in.
+
+	Performance Overhead: Resource-intensive and may impact performance.
+
+	Monolithic Nature: Often leads to monolithic architecture, limiting scalability.
+
+	
+* What is Tight Coupling , Loose Coupling & Need for Loose Coupling?
+
+
+Tight Coupling
+--------------
+
+Definition: The components or classes in a system are highly dependent on each other. Changes in one component often necessitate changes in other dependent components.
+
+Characteristics:
+----------------
+High Dependence: Components are closely linked; changes affect others.
+
+Impactful Changes: Modifications in one often require changes in others.
+
+Low Flexibility: Harder to update or replace components.
+
+Limited Reusability: Components are less reusable in other contexts.
+
+
+Loose Coupling
+--------------
+
+Definition: The components or classes have minimal dependencies on each other. They interact through well-defined interfaces or contracts, allowing them to be modified or replaced with minimal impact on other components.
+
+
+Characteristics:
+----------------
+Minimal Dependence: Components interact through abstract interfaces.
+
+Low Impact Changes: Changes in one component have minimal effect on others.
+
+High Flexibility: Easier to update or replace components.
+
+Enhanced Reusability: Components are more reusable in different contexts.
+
+
+
+Need for Loose Coupling
+-----------------------
+
+	Improved Modularity: Enhances modularity and manageability of components.
+
+	Easier Testing: Allows for isolated testing of components.
+
+	Flexibility and Maintainability: Simplifies changes and maintenance, adapting to evolving requirements.
+
+	Enhanced Reusability: Promotes reuse of components across different applications.
+
+	Scalability: Supports scalable architectures by allowing independent scaling of components.
+
+
+
+* What is Managing Beans, The Spring Container, Inversion of Control?
+
+Managing Beans
+==============
+Definition: Managing beans refers to the process of creating, configuring, and managing the lifecycle of Java objects (beans) within the Spring framework.
+
+Key Points:
+-----------
+
+Bean Lifecycle: Spring handles the instantiation, initialization, and destruction of beans.
+Configuration: Beans are defined and configured in Spring’s context through XML, annotations, or Java code.
+
+The Spring Container
+====================
+Definition: The Spring Container is the core component that manages the complete lifecycle of beans and their dependencies within a Spring application.
+
+Key Points:
+-----------
+Bean Factory: Provides the foundational container that supports dependency injection.
+Application Context: A more advanced container that adds additional features like event propagation and declarative mechanisms.
+
+Inversion of Control (IoC)
+==========================
+Definition: Inversion of Control is a design principle where the control of object creation and dependency management is transferred from the application code to a framework (like Spring).
+
+Key Points:
+----------
+Dependency Injection: A key implementation of IoC, where dependencies are injected into beans rather than beans creating or looking up their dependencies.
+Decoupling: Promotes loose coupling between components by handling dependencies externally.
+
+
+* The Factory Pattern?
+
+Definition: The Factory Pattern is a creational design pattern used to create objects without specifying the exact class of the object that will be created.
+
+Key Points:
+-----------
+Abstract Creation: Provides an abstract method for creating objects, allowing subclasses to alter the type of objects that will be created.
+
+Encapsulation: Encapsulates object creation logic, making the system more modular and easier to manage.
+
+Usage: Commonly used to manage and maintain object creation in complex systems, promoting code reusability and flexibility.
+
+
+* Configuration Metadata - XML, @Component, Auto-Detecting Beans
+
+Configuration Metadata
+======================
+Definition: Configuration metadata in Spring specifies how beans should be created, configured, and managed within the Spring container.
+
+XML Configuration
+==================
+Definition: Uses XML files to define and configure beans, their properties, and their relationships.
+
+Key Points:
+-----------
+Verbose: Requires detailed XML declarations for each bean and its dependencies.
+Legacy: Historically common but less favored in modern applications due to verbosity.
+
+@Component Annotation
+=======================
+Definition: An annotation-based approach to define and register beans in the Spring container.
+
+Key Points:
+----------
+Simplified Configuration: Automatically detects and registers classes annotated with @Component, @Service, @Repository, or @Controller.
+Class-Level: Place the annotation on the class to mark it as a Spring-managed bean.
+
+Auto-Detecting Beans
+=====================
+Definition: Spring automatically scans and detects beans in specified packages based on annotations.
+
+Key Points:
+-----------
+Component Scanning: Configured using @ComponentScan to specify packages where Spring should look for annotated classes.
+Automatic Registration: Beans are automatically registered in the Spring container without explicit XML or manual configuration.
+
+
+
+* Dependencies and Dependency Injection (DI) with the BeanFactory
+
+Dependencies
+=============
+
+Definition: Dependencies are objects or resources that a class needs to function. These are often other classes or services that a class depends on to perform its operations.
+
+Key Points:
+-----------
+Loose Coupling
+Injection: Dependencies are often injected into a class rather than the class creating or managing its dependencies.
+
+Dependency Injection (DI)
+=========================
+Definition: Dependency Injection is a design pattern used to inject dependencies into a class rather than the class creating them itself.
+
+Key Points:
+-----------
+Inversion of Control
+Types: Can be performed via constructor injection, setter injection, or field injection.
+
+BeanFactory
+============
+Definition: BeanFactory is the simplest container in Spring that provides the fundamental support for dependency injection and bean lifecycle management.
+
+Key Points:
+-----------
+Basic Container: Handles bean creation, configuration, and dependency injection.
+
+Lazy Initialization: Beans are created only when requested, not at container startup.
+
+Basic Features: Offers essential features but lacks advanced functionalities like event handling and internationalization found in ApplicationContext.
+Summary
+
+* Setter Injection
+
+Definition: Setter Injection is a form of Dependency Injection where dependencies are provided to a class through setter methods rather than through the constructor or directly.
+
+For Example
+-----------
+
+
+public class MyService {
+    private MyRepository myRepository;
+
+    // Setter method for dependency injection
+    public void setMyRepository(MyRepository myRepository) {
+        this.myRepository = myRepository;
+    }
+}
+
+Usage in XML Configuration
+--------------------------
+
+<bean id="myService" class="com.example.MyService">
+    <property name="myRepository" ref="myRepository"/>
+</bean>
+
+usage in Annotation
+-------------------
+@Component
+public class MyService {
+    private MyRepository myRepository;
+
+    @Autowired
+    public void setMyRepository(MyRepository myRepository) {
+        this.myRepository = myRepository;
+    }
+}
+
+
+Key Points:
+-----------
+Method-Based: Dependencies are set via public setter methods after the bean is instantiated.
+Optional Dependencies: Allows optional dependencies because setters can be invoked only for the dependencies that are needed.
+Flexibility: Provides flexibility in changing or updating dependencies without altering the bean's constructor.
+
+
+* "Spring Container
+   * The Spring Managed Bean Lifecycle
+   * Autowiring Dependencies"
+
+Spring Container
+=================
+Definition: The Spring Container is a core component of the Spring Framework that manages the lifecycle and configuration of beans (objects) in a Spring application.
+
+Key Points:
+-----------
+
+Bean Management: Handles creation, configuration, and management of application beans.
+
+Types: Includes BeanFactory (basic container) and ApplicationContext (more advanced container with additional features).
+
+Dependency Injection: Manages the injection of dependencies into beans.
+
+
+The Spring Managed Bean Lifecycle
+==================================
+Definition: Refers to the series of stages a bean goes through from its creation to its destruction within the Spring container.
+
+Key Stages:
+-----------
+Instantiation: Spring creates an instance of the bean.
+
+Populate Properties: Dependencies are injected into the bean (through constructor or setter injection).
+
+Initialization: Spring initializes the bean, invoking any initialization methods specified (e.g., @PostConstruct or custom init methods).
+
+Usage: The bean is used by the application as needed.
+
+Destruction: Before the container shuts down, Spring calls any destruction methods (e.g., @PreDestroy or custom destroy methods) to clean up resources.
+
+Autowiring Dependencies
+=========================
+Definition: A mechanism provided by Spring to automatically resolve and inject bean dependencies without requiring explicit configuration.
+
+Key Modes:
+-----------
+@Autowired: Annotation used to automatically inject dependencies. Can be applied to constructors, setters, or fields.
+
+Types:
+------
+By Type: Injects a bean based on the type of the property.
+
+By Name: Injects a bean based on the name of the property.
+
+Constructor: Injects dependencies through a constructor.
+
+Qualifiers: Use @Qualifier to specify which bean to inject when multiple candidates are available.
+
+
+
+* "Dependency Injection
+    * Using the Application Context
+    * Constructor Injection
+    * Factory Methods"
+
+Using the Application Context
+================================
+Definition: The ApplicationContext is a more advanced Spring container that provides additional features over the basic BeanFactory.
+
+Key Points:
+------------
+Bean Management: Manages bean lifecycle and dependency injection.
+Features: Includes support for event propagation, internationalization, and bean post-processing.
+Configuration: Configured using XML, annotations, or Java-based configurations.
+Access: Provides methods to retrieve beans and access various Spring features.
+
+
+Constructor Injection
+=====================
+Definition: Constructor Injection is a method of injecting dependencies into a bean through its constructor.
+
+Key Points:
+-----------
+Immutable Dependencies: Ensures that dependencies are provided when the bean is created and are immutable thereafter.
+Required: Dependencies are required and must be provided at instantiation.
+Usage: Often used when a bean requires mandatory dependencies for proper initialization.
+
+
+* "Life Cycle Annotations
+   Java Configuration, @Configuration, XML free configuration 
+   The Annotation Config Application Context"
+
+
+Life Cycle Annotations
+=======================
+Definition: Life Cycle Annotations in Spring manage the lifecycle of beans, including initialization and destruction phases.
+
+Key Annotations:
+------------------
+@PostConstruct: Marks a method to be executed after bean initialization.
+@PreDestroy: Marks a method to be executed before bean destruction.
+
+Java Configuration, @Configuration, XML-Free Configuration
+===========================================================
+Java Configuration: A way to configure Spring beans using Java classes instead of XML.
+
+@Configuration: Annotation used on a class to indicate that it contains bean definitions. Methods annotated with @Bean within this class define and configure Spring beans.
+XML-Free Configuration: Configuring beans using annotations and Java classes, eliminating the need for XML configuration files.
+
+The Annotation Config Application Context
+==========================================
+Definition: AnnotationConfigApplicationContext is a Spring container that supports Java-based configuration, scanning for components and handling bean lifecycle management without XML.
+
+Key Points:
+-----------
+Java-Based Configuration: Allows using annotations (@Component, @Configuration, etc.) for bean management.
+Component Scanning: Automatically detects and registers beans annotated with component-related annotations.
